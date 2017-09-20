@@ -1,16 +1,38 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom'
 import '../App.css';
+import DefaultView from './DefaultView'
+import CategoryView from './CategoryView'
+import PostForm from './PostForm'
+import PostDetails from './PostDetails'
+
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <div className="App-header">
-          <h2>Welcome to React</h2>
+          <h2>Readable Project</h2>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+
+        <div>
+          <Route exact path = "/" render = {() => (
+            <DefaultView/>
+          )}/>
+
+          <Route exact path = "/categoryview" render = {() => (
+            <CategoryView/>
+          )}/>
+
+          <Route exact path = "/postform" render = {() => (
+            <PostForm/>
+          )}/>
+
+          <Route exact path = "/postdetail" render = {() => (
+            <PostDetails/>
+          )}/>
+
+        </div>
       </div>
     );
   }

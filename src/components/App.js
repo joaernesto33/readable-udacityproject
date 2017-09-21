@@ -8,6 +8,7 @@ import PostDetails from './PostDetails'
 
 
 class App extends Component {
+
   render() {
     return (
       <div className="App">
@@ -17,7 +18,7 @@ class App extends Component {
 
         <div>
           <Route exact path = "/" render = {() => (
-            <DefaultView store={this.props.store}/>
+            <DefaultView/>
           )}/>
 
           <Route exact path = "/categoryview" render = {() => (

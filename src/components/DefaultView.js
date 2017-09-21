@@ -10,7 +10,7 @@ export default class DefaultView extends Component {
         <button>
           <Link to = "/postform">Add Post!</Link>
         </button>
-        <PostsList store={this.props.store}/>
+        <PostsList/>
       </div>
     )
   }

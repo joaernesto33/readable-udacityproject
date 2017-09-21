@@ -2,30 +2,38 @@ import React, { Component } from 'react'
 import GeneralPostControls from './GeneralPostControls'
 import { getPosts } from '../actions/index'
 import * as PostAPI from '../utils/SeverAPI'
+import { connect } from 'react-redux'
 
 
-export default class PostsList extends Component {
+class PostsList extends Component {
   componentDidMount () {
     PostAPI.getPosts().then((posts) => {
-      console.log(`POSTS: ${posts}`);
-      this.props.store.dispatch(getPosts(posts))
-      let teststore = this.props.store.getState()
-      let res = Object.values(teststore)
-      console.log(`State : ${this.props.store.getState()}`)
-      console.log(`TestStore : ${teststore}`)
-      console.log(`RESARRAY : ${res}`)
-      console.log(`ELEMENT : ${res[0].title}`)
+      this.props.dispatch(getPosts(posts))
     })
   }
 
   render() {
+    let showPosts = []
+    if (this.props.stateposts !== undefined)
+      showPosts = Object.values(this.props.stateposts.xpost)
+
     return(
       <div>
         <p>
-          Epa!
+          Epa!!
         </p>
+        {showPosts.map((post) => (
+          <p key={post.id}>{post.title}</p>
+        ))}
         <GeneralPostControls/>
       </div>
     )
   }
 }
+
+function mapStateToProps (stateposts) {
+  return {
+    stateposts
+  }
+}
+export default connect(mapStateToProps)(PostsList)

@@ -17,7 +17,7 @@ class App extends Component {
 
         <div>
           <Route exact path = "/" render = {() => (
-            <DefaultView/>
+            <DefaultView store={this.props.store}/>
           )}/>
 
           <Route exact path = "/categoryview" render = {() => (

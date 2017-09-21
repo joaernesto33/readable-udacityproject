@@ -21,9 +21,9 @@ export const getCategoryPosts = (categoryId) =>
 
 //Posts URLs*************************
 export const getPosts = () =>
-  fetch(`${api}/post`, { headers })
+  fetch(`${api}/posts`, { headers })
     .then(res => res.json())
-    .then(data => data.posts)
+    //.then(data => data.posts)
 
 export const addPost = (bodyPost) =>
   fetch(`${api}/posts`, {
@@ -59,7 +59,7 @@ export const updatePost = (postId, postBody) =>
       ...headers,
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify( { postId, portBody })
+    body: JSON.stringify( { postId, postBody })
   }).then(res => res.json())
 
 export const deletePost = (postId) =>
@@ -116,6 +116,6 @@ export const updateComment = (commentId, commentBody) =>
 export const deleteComment = (commentId) =>
   fetch(`${api}/comments/${commentId}`, {
     method: 'DELETE',
-    headers: { ... headers }
+    headers: { ...headers }
   }).then(res => res.json())
     .then(data => data.deletedMsg)

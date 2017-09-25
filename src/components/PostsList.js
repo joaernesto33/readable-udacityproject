@@ -23,9 +23,19 @@ class PostsList extends Component {
           Epa!!
         </p>
         {showPosts.map((post) => (
-          <p key={post.id}>{post.title}</p>
+          <div key={post.id}>
+            Id: {post.id}<br></br>
+            TimeStamp: {post.timestamp}<br></br>
+            Title: {post.title}<br></br>
+            Body: {post.body}<br></br>
+            Author: {post.author}<br></br>
+            Category: {post.category}<br></br>
+            Vote Score: {post.voteScore}<br></br>
+            <GeneralPostControls votes={post.voteScore} />
+          </div>
+
         ))}
-        <GeneralPostControls/>
+
       </div>
     )
   }

@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom'
 export default class GeneralPostControls extends Component {
   render () {
     return (
-      <div>
-        <p>          
-          <Link to = "/postdetail">Show post details</Link>
-        </p>
-      </div>
+      <pre>
+        <mark>Votes {this.props.votes} </mark>
+        <em>Total comments </em>
+        <Link to = "/postdetail">Show post details</Link>
+      </pre>
     )
   }
 }

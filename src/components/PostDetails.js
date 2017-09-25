@@ -6,9 +6,9 @@ export default class PostDetails extends Component {
     return (
       <div>
         <h2>This is PostDetails component</h2>
-        <a>Related comments</a>
+        <p>Related comments</p>
         <RightDetailsOptions/>
       </div>
     )
-  }  
+  }
 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import GeneralPostControls from './GeneralPostControls'
-import { getPosts } from '../actions/index'
+import { getPosts, getCategories } from '../actions/index'
 import * as PostAPI from '../utils/SeverAPI'
 import { connect } from 'react-redux'
 
@@ -10,12 +10,46 @@ class PostsList extends Component {
     PostAPI.getPosts().then((posts) => {
       this.props.dispatch(getPosts(posts))
     })
+
+    PostAPI.getCategories().then((categories) => {
+      this.props.dispatch(getCategories(categories))
+    })
   }
 
   render() {
     let showPosts = []
+    console.log(this.props.stateposts);
     if (this.props.stateposts !== undefined)
-      showPosts = Object.values(this.props.stateposts.xpost)
+      showPosts = Object.values(this.props.stateposts.posts)
+
+    let orderoption = this.props.stateposts.postOrderOption
+
+    if (orderoption == 'voteScore') {
+      showPosts.sort(function(a,b){
+        return a.voteScore - b.voteScore
+      })
+    }
+
+    if (orderoption == 'timeStamp') {
+      showPosts.sort(function(a,b){
+        return a.timestamp - b.timestamp
+      })
+    }
+
+    if (orderoption == 'alfabethical') {
+      showPosts.sort(function(a,b){
+        var nameA = a.title.toUpperCase();
+        var nameB = b.title.toUpperCase();
+        if (nameA < nameB) {
+          return -1
+        }
+        if (nameA > nameB) {
+          return 1
+        }
+
+        return 0
+      })
+    }
 
     return(
       <div>
@@ -41,7 +75,8 @@ class PostsList extends Component {
   }
 }
 
-function mapStateToProps (stateposts) {
+function mapStateToProps (state) {
+  let stateposts = state.xpost
   return {
     stateposts
   }

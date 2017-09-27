@@ -12,6 +12,14 @@ export const ADD_COMMENT = 'ADD_COMMENT'
 export const SCORE_COMMENT = 'SCORE_COMMENT'
 export const EDIT_COMMENT = 'EDIT_COMMENT'
 export const DELETE_COMMENT = 'DELETE_COMMENT'
+export const GET_CATEGORIES = 'GET_CATEGORIES'
+
+export function getCategories (categories) {
+  return {
+    type: GET_CATEGORIES,
+    categories,
+  }
+}
 
 export function getPosts (posts) {
   return {
@@ -27,7 +35,7 @@ export function filterPosts ({ filteroption }) {
   }
 }
 
-export function orderPosts ({ orderoption }) {
+export function orderPosts (orderoption) {
   return {
     type: ORDER_POSTS,
     orderoption,
@@ -64,9 +72,10 @@ export function deletePost  ({ post }) {
   }
 }
 
-export function getComments () {
+export function getComments (comments) {
   return {
-    type: GET_COMMENTS
+    type: GET_COMMENTS,
+    comments,
   }
 }
 
@@ -77,7 +86,7 @@ export function filterComments ({ filteroption }) {
   }
 }
 
-export function orderComments ({ orderoption }) {
+export function orderComments (orderoption) {
   return {
     type: ORDER_COMMENTS,
     orderoption,

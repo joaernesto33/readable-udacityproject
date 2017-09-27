@@ -13,19 +13,41 @@ import {
   ADD_COMMENT,
   SCORE_COMMENT,
   EDIT_COMMENT,
-  DELETE_COMMENT
+  DELETE_COMMENT,
+  GET_CATEGORIES
 } from '../actions/index'
 
-function xpost (state={}, action) {
+
+let postInitialState = {
+  posts:[],
+  postOrderOption:''
+}
+
+let commentInitialState = {
+  comments:[],
+  commentOrderOption:''
+}
+
+let catInitialState = {
+  categories:[]
+}
+
+function xpost (state = postInitialState, action) {
   switch (action.type){
     case GET_POSTS :
-      return action.posts
+      return {
+        posts:action.posts,
+        postOrderOption:''
+      }
 
     case FILTER_POSTS :
       return state
 
     case ORDER_POSTS :
-      return state
+      return {
+        ...state,
+        postOrderOption:action.orderoption
+      }
 
     case ADD_POST :
       return state
@@ -44,7 +66,7 @@ function xpost (state={}, action) {
   }
 }
 
-function xcomment (state={}, action) {
+function xcomment (state=commentInitialState, action) {
   switch (action.type){
     case GET_COMMENTS:
       return state
@@ -53,7 +75,10 @@ function xcomment (state={}, action) {
       return state
 
     case ORDER_COMMENTS:
-      return state
+      return {
+        ...state,
+        commentOrderOption:action.orderoption
+      }
 
     case ADD_COMMENT:
       return state
@@ -72,7 +97,20 @@ function xcomment (state={}, action) {
   }
 }
 
+function xcat (state=catInitialState, action) {
+  switch (action.type){
+    case GET_CATEGORIES:
+      return {
+        categories:action.categories
+      }
+    default:
+      return state
+  }
+}
+
+
 export default combineReducers({
   xpost,
   xcomment,
+  xcat,
 })

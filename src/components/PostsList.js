@@ -23,20 +23,26 @@ class PostsList extends Component {
       showPosts = Object.values(this.props.stateposts.posts)
 
     let orderoption = this.props.stateposts.postOrderOption
+    let filteroption = this.props.stateposts.selectedCat
 
-    if (orderoption == 'voteScore') {
+    if (filteroption !== '') {
+      let filterArray = showPosts.filter((post)=>post.category===filteroption)
+      showPosts = filterArray
+    }
+
+    if (orderoption === 'voteScore') {
       showPosts.sort(function(a,b){
         return a.voteScore - b.voteScore
       })
     }
 
-    if (orderoption == 'timeStamp') {
+    if (orderoption === 'timeStamp') {
       showPosts.sort(function(a,b){
         return a.timestamp - b.timestamp
       })
     }
 
-    if (orderoption == 'alfabethical') {
+    if (orderoption === 'alfabethical') {
       showPosts.sort(function(a,b){
         var nameA = a.title.toUpperCase();
         var nameB = b.title.toUpperCase();
@@ -46,7 +52,6 @@ class PostsList extends Component {
         if (nameA > nameB) {
           return 1
         }
-
         return 0
       })
     }

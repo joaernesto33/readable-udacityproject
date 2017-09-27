@@ -28,7 +28,7 @@ export function getPosts (posts) {
   }
 }
 
-export function filterPosts ({ filteroption }) {
+export function filterPosts (filteroption) {
   return {
     type: FILTER_POSTS,
     filteroption,

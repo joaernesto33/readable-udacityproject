@@ -20,7 +20,8 @@ import {
 
 let postInitialState = {
   posts:[],
-  postOrderOption:''
+  postOrderOption:'',
+  selectedCat: ''
 }
 
 let commentInitialState = {
@@ -37,11 +38,15 @@ function xpost (state = postInitialState, action) {
     case GET_POSTS :
       return {
         posts:action.posts,
-        postOrderOption:''
+        postOrderOption:'',
+        selectedCat:''
       }
 
     case FILTER_POSTS :
-      return state
+      return {
+        ...state,
+        selectedCat:action.filteroption
+      }
 
     case ORDER_POSTS :
       return {

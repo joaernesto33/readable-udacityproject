@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PostsList from './PostsList'
-import LeftFilterCategory from './LeftFilterCategory'
+import CategoryList from './CategoryList'
 import LeftOrderOptions from './LeftOrderOptions'
 import TopNavBar from './TopNavBar'
 import { Link } from 'react-router-dom'
@@ -17,7 +17,7 @@ export default class DefaultView extends Component {
           </button>
           <PostsList/>
         </div>
-        <LeftFilterCategory/>
+        <CategoryList/>
         <br></br>
         <br></br>
         <br></br>

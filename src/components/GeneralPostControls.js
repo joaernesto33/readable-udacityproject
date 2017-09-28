@@ -21,7 +21,7 @@ class GeneralPostControls extends Component {
         <mark>Votes {this.props.votes} </mark>
         <em>Total comments </em>
         <Link to = "/postdetail">
-          <label onClick={(event)=>this.showingDetails(`${this.props.postid}`)}>
+          <label onClick={(event)=>this.showingDetails(this.props.postid)}>
             Show post details
           </label>
         </Link>

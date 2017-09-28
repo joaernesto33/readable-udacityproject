@@ -32,9 +32,9 @@ export const addPost = (bodyPost) =>
       ...headers,
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ bodyPost })
+    body: JSON.stringify(bodyPost)
   }).then(res => res.json())
-    .then(data => data.posts)
+    //.then(data => data.posts)
 
 export const getPost = (postId) =>
   fetch(`${api}/posts/${postId}`, { headers })
@@ -59,7 +59,7 @@ export const updatePost = (postId, postBody) =>
       ...headers,
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify( { postId, postBody })
+    body: JSON.stringify(postBody)
   }).then(res => res.json())
 
 export const deletePost = (postId) =>
@@ -85,12 +85,12 @@ export const addComment = (bodyComment) =>
     },
     body: JSON.stringify({ bodyComment })
   }).then(res => res.json())
-    .then(data => data.comments)
+    //.then(data => data.comments)
 
 export const getComment = (commentId) =>
   fetch(`${api}/comments/${commentId}`, { headers })
     .then(res => res.json())
-    .then(data => data.comment)
+    //.then(data => data.comment)
 
 export const votingComment = (commentId, option) =>
   fetch(`${api}/comments/${commentId}`, {

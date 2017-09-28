@@ -1,43 +1,41 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import * as PostAPI from '../utils/SeverAPI'
-import { getPosts } from '../actions'
 import { connect } from 'react-redux'
 import serializeForm from 'form-serialize'
 
 
-class PostForm extends Component {
+class PostFormUpdate extends Component {
+
   handlePostData = (postdata) => {
     postdata.preventDefault()
     const values = serializeForm(postdata.target, { hash: true})
-    PostAPI.addPost(values).then((posts) => {
-      this.props.createPost(posts)
-    })
+    PostAPI.updatePost(this.props.statepost.id, values)
   }
   render () {
     return (
       <div>
-        <h2>Write a Post!</h2>
+        <h2>Update the Post!</h2>
         <br></br>
         <br></br>
         <form onSubmit={this.handlePostData}>
           <label>Id</label>
-          <input type="text" id="pid" name="id" placeholder="Post Id..."></input>
+          <input type="text" id="pid" name="id" value={this.props.statepost.id}></input>
 
           <label>TimeStamp</label>
-          <input type="text" id="pid" name="timestamp" placeholder="Timestamp..."></input>
+          <input type="text" id="pid" name="timestamp" defaultValue={this.props.statepost.timestamp}></input>
 
           <label>Title</label>
-          <input type="text" id="ptitle" name="title" placeholder="Post title..."></input>
+          <input type="text" id="ptitle" name="title" defaultValue={this.props.statepost.title}></input>
 
           <label>Body</label>
-          <input type="text" id="pbody" name="body" placeholder="Write the body of the post..."></input>
+          <input type="text" id="pbody" name="body" defaultValue={this.props.statepost.body}></input>
 
           <label>Author</label>
-          <input type="text" id="pauthor" name="author" placeholder="Author's name..."></input>
+          <input type="text" id="pauthor" name="author" defaultValue={this.props.statepost.author}></input>
 
           <label>Category</label>
-          <input type="text" id="pcat" name="category" placeholder="Category..."></input>
+          <input type="text" id="pcat" name="category" defaultValue={this.props.statepost.category}></input>
           <button>
             Save
           </button>
@@ -52,13 +50,16 @@ class PostForm extends Component {
 }
 
 function mapStateToProps (state) {
-  return state
+  let statepost = state.xpost.posts
+  return {
+    statepost
+  }
 }
 
 function mapDispatchToProps (dispatch) {
   return {
-    createPost: (data) => dispatch(getPosts(data))
+    createPost: (data) => dispatch()
   }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(PostForm)
+export default connect(mapStateToProps,mapDispatchToProps)(PostFormUpdate)

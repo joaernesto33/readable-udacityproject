@@ -5,6 +5,7 @@ import DefaultView from './DefaultView'
 import CategoryView from './CategoryView'
 import PostForm from './PostForm'
 import PostDetails from './PostDetails'
+import PostFormUpdate from './PostFormUpdate'
 
 
 class App extends Component {
@@ -27,6 +28,10 @@ class App extends Component {
 
           <Route exact path = "/postform" render = {() => (
             <PostForm/>
+          )}/>
+
+          <Route exact path = "/postupdate" render = {() => (
+            <PostFormUpdate/>
           )}/>
 
           <Route exact path = "/postdetail" render = {() => (

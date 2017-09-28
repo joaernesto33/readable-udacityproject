@@ -5,10 +5,6 @@ import {
   FILTER_POSTS,
   GET_FILTERED_POSTS,
   ORDER_POSTS,
-  ADD_POST,
-  SCORE_POST,
-  EDIT_POST,
-  DELETE_POST,
   GET_COMMENTS,
   ORDER_COMMENTS,
   ADD_COMMENT,
@@ -68,18 +64,6 @@ function xpost (state = postInitialState, action) {
         ...state,
         postOrderOption:action.orderoption
       }
-
-    case ADD_POST :
-      return state
-
-    case SCORE_POST :
-      return state
-
-    case EDIT_POST :
-      return state
-
-    case DELETE_POST :
-      return state
 
     default :
       return state

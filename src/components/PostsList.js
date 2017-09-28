@@ -21,14 +21,7 @@ class PostsList extends Component {
     if (this.props.stateposts !== undefined)
       showPosts = Object.values(this.props.stateposts.posts)
 
-    let orderoption = this.props.stateposts.postOrderOption
-    console.log(showPosts);
-    //let filteroption = this.props.stateposts.selectedCat
-
-    /*if (filteroption !== '') {
-      let filterArray = showPosts.filter((post)=>post.category===filteroption)
-      showPosts = filterArray
-    }*/
+    let orderoption = this.props.stateposts.postOrderOption    
 
     if (orderoption === 'voteScore') {
       showPosts.sort(function(a,b){

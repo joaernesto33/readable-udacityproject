@@ -21,7 +21,7 @@ class PostDetails extends Component {
           Author: {statepost.author}<br></br>
           Category: {statepost.category}<br></br>
           Vote Score: {statepost.voteScore}<br></br>
-        <PostDetailsControls/>
+        <PostDetailsControls postid={statepost.id}/>
         </div>
         <div>
           <RelatedComments/>

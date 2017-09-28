@@ -18,17 +18,17 @@ class PostsList extends Component {
 
   render() {
     let showPosts = []
-    console.log(this.props.stateposts);
     if (this.props.stateposts !== undefined)
       showPosts = Object.values(this.props.stateposts.posts)
 
     let orderoption = this.props.stateposts.postOrderOption
-    let filteroption = this.props.stateposts.selectedCat
+    console.log(showPosts);
+    //let filteroption = this.props.stateposts.selectedCat
 
-    if (filteroption !== '') {
+    /*if (filteroption !== '') {
       let filterArray = showPosts.filter((post)=>post.category===filteroption)
       showPosts = filterArray
-    }
+    }*/
 
     if (orderoption === 'voteScore') {
       showPosts.sort(function(a,b){
@@ -70,7 +70,7 @@ class PostsList extends Component {
             Author: {post.author}<br></br>
             Category: {post.category}<br></br>
             Vote Score: {post.voteScore}<br></br>
-            <GeneralPostControls votes={post.voteScore} />
+            <GeneralPostControls votes={post.voteScore} postid={post.id}/>
           </div>
 
         ))}

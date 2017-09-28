@@ -16,7 +16,7 @@ export const getCategories = () =>
 export const getCategoryPosts = (categoryId) =>
   fetch(`${api}/${categoryId}/posts`, { headers })
     .then(res => res.json())
-    .then(data => data.categoryPosts)
+    //.then(data => data.categoryPosts)
 
 
 //Posts URLs*************************
@@ -39,7 +39,7 @@ export const addPost = (bodyPost) =>
 export const getPost = (postId) =>
   fetch(`${api}/posts/${postId}`, { headers })
     .then(res => res.json())
-    .then(data => data.post)
+    //.then(data => data.post)
 
 export const votingPost = (postId, option) =>
   fetch(`${api}/posts/${postId}`, {
@@ -74,7 +74,7 @@ export const deletePost = (postId) =>
 export const getPostComments = (postId) =>
   fetch(`${api}/posts/${postId}/comments`, { headers })
     .then(res => res.json())
-    .then(data => data.postComments)
+    //.then(data => data.postComments)
 
 export const addComment = (bodyComment) =>
   fetch(`${api}/comments`, {

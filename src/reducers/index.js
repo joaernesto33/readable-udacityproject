@@ -1,14 +1,15 @@
 import { combineReducers } from 'redux'
 import {
   GET_POSTS,
+  GET_POST,
   FILTER_POSTS,
+  GET_FILTERED_POSTS,
   ORDER_POSTS,
   ADD_POST,
   SCORE_POST,
   EDIT_POST,
   DELETE_POST,
   GET_COMMENTS,
-  FILTER_COMMENTS,
   ORDER_COMMENTS,
   ADD_COMMENT,
   SCORE_COMMENT,
@@ -40,6 +41,20 @@ function xpost (state = postInitialState, action) {
         posts:action.posts,
         postOrderOption:'',
         selectedCat:''
+      }
+
+    case GET_POST :
+      return {
+        posts:action.post,
+        postOrderOption:state.postOrderOption,
+        selectedCat:state.selectedCat
+      }
+
+    case GET_FILTERED_POSTS :
+      return {
+        posts:action.posts,
+        postOrderOption: state.postOrderOption,
+        selectedCat: state.selectedCat
       }
 
     case FILTER_POSTS :
@@ -74,10 +89,10 @@ function xpost (state = postInitialState, action) {
 function xcomment (state=commentInitialState, action) {
   switch (action.type){
     case GET_COMMENTS:
-      return state
-
-    case FILTER_COMMENTS:
-      return state
+    return {
+      comments:action.comments,
+      commentOrderOption:'',
+    }
 
     case ORDER_COMMENTS:
       return {

@@ -83,7 +83,7 @@ export const addComment = (bodyComment) =>
       ...headers,
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ bodyComment })
+    body: JSON.stringify(bodyComment)
   }).then(res => res.json())
     //.then(data => data.comments)
 
@@ -110,7 +110,7 @@ export const updateComment = (commentId, commentBody) =>
       ...headers,
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ commentId, commentBody })
+    body: JSON.stringify(commentBody)
   }).then(res => res.json())
 
 export const deleteComment = (commentId) =>

@@ -4,7 +4,6 @@ import CommentControls from './CommentControls'
 
 class CommentsList extends Component {
   render () {
-    console.log(this.props.statecomments)
     let showComments = []
     showComments = this.props.statecomments
     return (
@@ -15,7 +14,14 @@ class CommentsList extends Component {
             Author: {comment.author}<br></br>
             Body: {comment.body}<br></br>
             Comment Vote Score: {comment.voteScore}<br></br>
-            <CommentControls commentvotes={comment.voteScore}/>
+            <CommentControls
+              commentid={comment.id}
+              parentid={comment.parentId}
+              timestamp={comment.timestamp}
+              body={comment.body}
+              author={comment.author}
+              commentvotes={comment.voteScore} 
+              />
           </p>
         ))}
       </div>

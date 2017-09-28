@@ -25,7 +25,7 @@ class PostForm extends Component {
           <input type="text" id="pid" name="id" placeholder="Post Id..."></input>
 
           <label>TimeStamp</label>
-          <input type="text" id="pid" name="timestamp" placeholder="Timestamp..."></input>
+          <input type="text" id="timest" name="timestamp" placeholder="Timestamp..."></input>
 
           <label>Title</label>
           <input type="text" id="ptitle" name="title" placeholder="Post title..."></input>

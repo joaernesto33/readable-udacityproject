@@ -48,9 +48,9 @@ export const votingPost = (postId, option) =>
       ...headers,
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ postId, option })
-  }).then(res => res.json())
-    .then(data => data.votePost)
+    body: JSON.stringify({option})
+  })
+
 
 export const updatePost = (postId, postBody) =>
   fetch(`${api}/posts/${postId}`, {
@@ -99,9 +99,9 @@ export const votingComment = (commentId, option) =>
       ...headers,
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ commentId, option })
-  }).then(res => res.json())
-    .then(data => data.voteComment)
+    body: JSON.stringify({option})
+  })
+
 
 export const updateComment = (commentId, commentBody) =>
   fetch(`${api}/comments/${commentId}`, {

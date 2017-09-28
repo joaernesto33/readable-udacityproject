@@ -30,6 +30,11 @@ class CommentControls extends Component {
     PostAPI.updateComment(this.props.commentid, commentbody)
   }
 
+  commentVote = (idcomment, voteoption) => {
+    PostAPI.votingComment(idcomment, voteoption)
+  }
+
+
   render() {
     const { editModalOpen } = this.state
 
@@ -37,6 +42,8 @@ class CommentControls extends Component {
       <div>
         <font>
           <mark>{this.props.commentvotes} Votes</mark>
+          <button onClick={(e)=>this.commentVote(this.props.commentid,'upVote')}>Up</button>
+          <button onClick={(e)=>this.commentVote(this.props.commentid,'downVote')}>Down</button>
           <button onClick={()=>this.openEditModal()}>Edit</button>
           <button onClick={(e)=>this.handleRemoveComment(this.props.commentid)}>Remove</button>
         </font>

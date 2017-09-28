@@ -15,10 +15,16 @@ class GeneralPostControls extends Component {
     })
   }
 
+  postVote = (idPost, voteOption) => {
+    PostAPI.votingPost(idPost, voteOption)
+  }
+
   render () {
     return (
       <pre>
         <mark>Votes {this.props.votes} </mark>
+        <button onClick={(e)=>this.postVote(this.props.postid, 'upVote')}>Up</button>
+        <button onClick={(e)=>this.postVote(this.props.postid, 'downVote')}>Down</button>
         <em>Total comments </em>
         <Link to = "/postdetail">
           <label onClick={(event)=>this.showingDetails(this.props.postid)}>

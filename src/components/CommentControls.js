@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import * as PostAPI from '../utils/SeverAPI'
 import Modal from 'react-modal'
 import serializeForm from 'form-serialize'
+import EditIcon from 'react-icons/lib/md/create'
+import RemoveIcon from 'react-icons/lib/md/clear'
+import AddIcon from 'react-icons/lib/md/add-circle'
+import MinusIcon from 'react-icons/lib/md/remove-circle'
 
 class CommentControls extends Component {
   state ={
@@ -42,11 +46,20 @@ class CommentControls extends Component {
       <div>
         <font>
           <mark>{this.props.commentvotes} Votes</mark>
-          <button onClick={(e)=>this.commentVote(this.props.commentid,'upVote')}>Up</button>
-          <button onClick={(e)=>this.commentVote(this.props.commentid,'downVote')}>Down</button>
-          <button onClick={()=>this.openEditModal()}>Edit</button>
-          <button onClick={(e)=>this.handleRemoveComment(this.props.commentid)}>Remove</button>
+          <button  className="icon-btn" onClick={(e)=>this.commentVote(this.props.commentid,'upVote')}>
+            <i><AddIcon/></i>
+          </button>
+          <button className="icon-btn" onClick={(e)=>this.commentVote(this.props.commentid,'downVote')}>
+            <i><MinusIcon/></i>
+          </button>
+          <button className="icon-btn" onClick={()=>this.openEditModal()}>
+            <i><EditIcon/></i>
+          </button>
+          <button className="icon-btn" onClick={(e)=>this.handleRemoveComment(this.props.commentid)}>
+            <i><RemoveIcon/></i>
+          </button>
         </font>
+
 
         <Modal
           overlayClassName='overlay'
@@ -57,24 +70,25 @@ class CommentControls extends Component {
             <div>
               <h2>Update the comment...</h2>
               <br></br>
-              <form onSubmit={this.handleUpdateComment}>
-                <label>Comment Id</label>
-                <input type="text" id="id" name="id" defaultValue={this.props.commentid}></input>
+              <form onSubmit={this.handleUpdateComment} className="create-product-form">
+                <div className="create-products-details">
+                  <label><b>Comment Id</b></label>
+                  <input type="text" id="id" name="id" defaultValue={this.props.commentid}></input>
 
-                <label>Parent Id</label>
-                <input type="text" id="pId" name="parentId" value={this.props.parentid}></input>
+                  <label><b>Parent Id</b></label>
+                  <input type="text" id="pId" name="parentId" value={this.props.parentid}></input>
 
-                <label>Timestamp</label>
-                <input type="text" id="timest" name="timestamp" defaultValue={this.props.timestamp}></input>
+                  <label><b>Timestamp</b></label>
+                  <input type="text" id="timest" name="timestamp" defaultValue={this.props.timestamp}></input>
 
-                <label>Body</label>
-                <input type="text" id="pbody" name="body" defaultValue={this.props.body}></input>
+                  <label><b>Body</b></label>
+                  <input type="text" id="pbody" name="body" defaultValue={this.props.body}></input>
 
-                <label>Author</label>
-                <input type="text" id="pauthor" name="author" defaultValue={this.props.author}></input>
+                  <label><b>Author</b></label>
+                  <input type="text" id="pauthor" name="author" defaultValue={this.props.author}></input>
 
-                <button>Update!</button>
-
+                  <button><b>Update!</b></button>
+                </div>
               </form>
               <button onClick={()=>this.closeEditModal()}>Close modal</button>
             </div>

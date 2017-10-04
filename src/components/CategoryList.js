@@ -20,21 +20,27 @@ class LeftFilterCategory extends Component {
       showCategories = Object.values(this.props.statecats.categories)
 
     return (
-      <div className="sidenav">
-        <Link to='/'>
-          <label>All Categories</label>
-        </Link>
 
-        {showCategories.map((category) => (
-          <div key={category.name}>
-            <Link to='categoryview'>
-              <label onClick={(event)=>this.handleFilter(`${category.name}`)}>
-                  {category.name}
-              </label>
-            </Link>
-          </div>
-        ))}
-      </div>
+
+
+      <div className="column left">
+        <div className="vertical-menu">
+
+          <Link to='/'>
+            <label>All Categories</label>
+          </Link>
+          {showCategories.map((category) => (
+            <div key={category.name} onClick={(event)=>this.handleFilter(`${category.name}`)}>
+              <Link to='categoryview'>
+                <label >
+                    {category.name}
+                </label>
+              </Link>
+            </div>
+          ))}
+        </div>
+
+    </div>
     )
   }
 }

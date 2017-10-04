@@ -20,29 +20,23 @@ class PostForm extends Component {
         <h2>Write a Post!</h2>
         <br></br>
         <br></br>
-        <form onSubmit={this.handlePostData}>
-          <label>Id</label>
-          <input type="text" id="pid" name="id" placeholder="Post Id..."></input>
+        <form onSubmit={this.handlePostData} className="create-product-form">
+          <div className="create-products-details">
 
-          <label>TimeStamp</label>
-          <input type="text" id="timest" name="timestamp" placeholder="Timestamp..."></input>
+            <input type="text" id="pid" name="id" placeholder="Id..."></input>
+            <input type="text" id="pid" name="timestamp" placeholder="timestamp"></input>
+            <input type="text" id="ptitle" name="title" placeholder="Title..."></input>
+            <input type="text" id="pbody" name="body" placeholder="Write a body..."></input>
+            <input type="text" id="pauthor" name="author" placeholder="Author..."></input>
+            <input type="text" id="pcat" name="category" placeholder="Category..."></input>
 
-          <label>Title</label>
-          <input type="text" id="ptitle" name="title" placeholder="Post title..."></input>
-
-          <label>Body</label>
-          <input type="text" id="pbody" name="body" placeholder="Write the body of the post..."></input>
-
-          <label>Author</label>
-          <input type="text" id="pauthor" name="author" placeholder="Author's name..."></input>
-
-          <label>Category</label>
-          <input type="text" id="pcat" name="category" placeholder="Category..."></input>
-          <button>
-            Save
-          </button>
+            <button>
+              Save Post!
+            </button>
+          </div>
         </form>
-        <button className="button1">
+
+        <button >
           <Link to = "/">Cancel</Link>
         </button>
 

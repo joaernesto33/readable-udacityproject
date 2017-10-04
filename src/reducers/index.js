@@ -7,23 +7,21 @@ import {
   ORDER_POSTS,
   GET_COMMENTS,
   ORDER_COMMENTS,
-  ADD_COMMENT,
-  SCORE_COMMENT,
-  EDIT_COMMENT,
-  DELETE_COMMENT,
-  GET_CATEGORIES
+  GET_CATEGORIES,
+  REGISTER_TOTAL_COMMENTS
 } from '../actions/index'
 
 
 let postInitialState = {
   posts:[],
   postOrderOption:'',
-  selectedCat: ''
+  selectedCat: '',
+  //numofcomments:0,
 }
 
 let commentInitialState = {
   comments:[],
-  commentOrderOption:''
+  commentOrderOption:'',
 }
 
 let catInitialState = {
@@ -65,6 +63,47 @@ function xpost (state = postInitialState, action) {
         postOrderOption:action.orderoption
       }
 
+    case REGISTER_TOTAL_COMMENTS :
+      const newstate = {...state}
+
+      newstate.posts.forEach( post => {
+        console.log(post.id === action.postid);
+        if( post.id === action.postid){
+          post.numOfcomments = action.totalcomments
+        }
+      })
+
+      return {
+        ...newstate,
+      }
+
+
+      /*const newstate = {...state}
+      console.log(newstate);
+      let z = newstate.posts.filter( (x) => {
+        console.log(x)
+        console.log(action.postid)
+        console.log(x.id===action.postid)
+        return x.id===action.postid
+      }).map(
+        (e) => {const i ={totalcomments: action.totalcomments}
+        return i
+      }
+      )
+
+      console.log(z);
+
+      return z*/
+
+
+    /*  return {
+        ...state,
+        ...state, ...action.totalcomments,
+        numOfcomments: action.totalcomments
+      }*/
+
+
+
     default :
       return state
   }
@@ -83,18 +122,6 @@ function xcomment (state=commentInitialState, action) {
         ...state,
         commentOrderOption:action.orderoption
       }
-
-    case ADD_COMMENT:
-      return state
-
-    case SCORE_COMMENT:
-      return state
-
-    case EDIT_COMMENT:
-      return state
-
-    case DELETE_COMMENT:
-      return state
 
     default:
       return state

@@ -3,12 +3,21 @@ import { connect } from 'react-redux'
 import { orderPosts } from '../actions'
 
 class LeftOrderOptions extends Component {
+
+
   render () {
     return (
-      <div className="sidenav">
-        <button onClick={(e)=>this.props.updateSort("voteScore")}>Order by voteScore</button>
-        <button onClick={(e)=>this.props.updateSort("timeStamp")}>Order by timestamp</button>
-        <button onClick={(e)=>this.props.updateSort("alfabethical")}>Order alfabethical</button>
+      <div className="textright">
+        Sort by:
+        <span>
+          <select defaultValue="timeStamp" onChange={(event) => this.props.updateSort(event.target.value)}>
+            <option value="none" disabled>Move to...</option>
+            <option value="timeStamp">Order by voteScore</option>
+            <option value="alfabethical">Order by timestamp</option>
+            <option value="voteScore">Order alfabethical</option>
+          </select>
+        </span>
+
       </div>
     )
   }

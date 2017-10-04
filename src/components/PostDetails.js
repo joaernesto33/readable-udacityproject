@@ -8,35 +8,49 @@ import RelatedComments from './RelatedComments'
 
 class PostDetails extends Component {
   render () {
+    let totalComments = []
     let { statepost } = this.props
+    totalComments = Object.values(this.props.statecomment)
     return (
       <div>
         <h1>This is PostDetails component</h1>
-        <RightDetailsOptions/>
-        <div key={statepost.id}>
-          Id: {statepost.id}<br></br>
-          TimeStamp: {statepost.timestamp}<br></br>
-          Title: {statepost.title}<br></br>
-          Body: {statepost.body}<br></br>
-          Author: {statepost.author}<br></br>
-          Category: {statepost.category}<br></br>
-          Vote Score: {statepost.voteScore}<br></br>
-        <PostDetailsControls postid={statepost.id}/>
+        <div className="row">
+          <RightDetailsOptions/>
+          <div className="column right">
+            <div key={statepost.id}>
+              Id: {statepost.id}<br></br>
+              TimeStamp: {statepost.timestamp}<br></br>
+              Title: {statepost.title}<br></br>
+              Body: {statepost.body}<br></br>
+              Author: {statepost.author}<br></br>
+              Category: {statepost.category}<br></br>
+              Vote Score: {statepost.voteScore}<br></br>
+            <PostDetailsControls postid={statepost.id}/>
+            </div>
+            <div>
+              <RelatedComments totalcomments={totalComments.length} postid={statepost.id}/>
+            </div>
+            <h2>Comments:</h2>
+            <CommentsList />
+          </div>
         </div>
-        <div>
-          <RelatedComments/>
+
+        <div className="footer">
+          <footer>
+            <p>Udacity Readable - Post by: Jokin 2017</p>
+          </footer>
         </div>
-        <h2>Related comments</h2>
-        <CommentsList />
-      </div>
+    </div>
     )
   }
 }
 
 function mapStateToProps (state) {
   let statepost = state.xpost.posts
+  let statecomment = state.xcomment.comments
   return{
-    statepost
+    statepost,
+    statecomment
   }
 }
 export default connect(mapStateToProps)(PostDetails)

@@ -6,6 +6,7 @@ import CategoryView from './CategoryView'
 import PostForm from './PostForm'
 import PostDetails from './PostDetails'
 import PostFormUpdate from './PostFormUpdate'
+import { Link } from 'react-router-dom'
 
 
 class App extends Component {
@@ -13,13 +14,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <h2>Readable Project</h2>
-        </div>
 
         <div>
-          <Route exact path = "/" render = {() => (
-            <DefaultView/>
+          <Route exact path = "/" render = {( props ) => (
+            <DefaultView props={props}/>
           )}/>
 
           <Route exact path = "/categoryview" render = {() => (
@@ -37,8 +35,8 @@ class App extends Component {
           <Route exact path = "/postdetail" render = {() => (
             <PostDetails/>
           )}/>
+        </div>      
 
-        </div>
       </div>
     );
   }

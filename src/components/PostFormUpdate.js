@@ -18,27 +18,30 @@ class PostFormUpdate extends Component {
         <h2>Update the Post!</h2>
         <br></br>
         <br></br>
-        <form onSubmit={this.handlePostData}>
-          <label>Id</label>
-          <input type="text" id="pid" name="id" value={this.props.statepost.id}></input>
+        <form onSubmit={this.handlePostData} className="create-product-form">
+          <div className="create-products-details">
 
-          <label>TimeStamp</label>
-          <input type="text" id="pid" name="timestamp" defaultValue={this.props.statepost.timestamp}></input>
+          <label><b>Id:</b></label>
+            <input type="text" id="pid" name="id" value={this.props.statepost.id}></input><br></br>
 
-          <label>Title</label>
-          <input type="text" id="ptitle" name="title" defaultValue={this.props.statepost.title}></input>
+            <label><b>TimeStamp</b></label>
+            <input type="text" id="pid" name="timestamp" defaultValue={this.props.statepost.timestamp}></input>
 
-          <label>Body</label>
-          <input type="text" id="pbody" name="body" defaultValue={this.props.statepost.body}></input>
+            <label><b>Title</b></label>
+            <input type="text" id="ptitle" name="title" defaultValue={this.props.statepost.title}></input>
 
-          <label>Author</label>
-          <input type="text" id="pauthor" name="author" defaultValue={this.props.statepost.author}></input>
+            <label><b>Body</b></label>
+            <input type="text" id="pbody" name="body" defaultValue={this.props.statepost.body}></input>
 
-          <label>Category</label>
-          <input type="text" id="pcat" name="category" defaultValue={this.props.statepost.category}></input>
-          <button>
-            Save
-          </button>
+            <label><b>Author</b></label>
+            <input type="text" id="pauthor" name="author" defaultValue={this.props.statepost.author}></input>
+
+            <label><b>Category</b></label>
+            <input type="text" id="pcat" name="category" defaultValue={this.props.statepost.category}></input>
+            <button>
+              Update the post
+            </button>
+          </div>
         </form>
         <button className="button1">
           <Link to = "/">Cancel</Link>

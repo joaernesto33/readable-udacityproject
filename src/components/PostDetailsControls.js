@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import * as PostAPI from '../utils/SeverAPI'
 import { connect } from 'react-redux'
+import EditIcon from 'react-icons/lib/md/create'
+import RemoveIcon from 'react-icons/lib/md/clear'
 
 class PostDetailsControls extends Component {
   handleRemove = (idPost) => {
@@ -12,9 +14,13 @@ class PostDetailsControls extends Component {
     return (
       <div>
         <Link to = "/postupdate">
-          <button>Update Post</button>
+          <button className="icon-btn">
+            <i><EditIcon/></i>
+          </button>
         </Link>
-        <button onClick={(e)=>this.handleRemove(this.props.statepost.id)}>Remove Post</button>
+        <button className="icon-btn" onClick={(e)=>this.handleRemove(this.props.statepost.id)}>
+          <i><RemoveIcon/></i>
+        </button>
       </div>
     )
   }

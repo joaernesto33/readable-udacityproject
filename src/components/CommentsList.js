@@ -8,9 +8,8 @@ class CommentsList extends Component {
     showComments = this.props.statecomments
     return (
       <div>
-        Comments Here!
         {showComments.map((comment) => (
-          <p key={comment.id}>
+          <div key={comment.id}>
             Author: {comment.author}<br></br>
             Body: {comment.body}<br></br>
             Comment Vote Score: {comment.voteScore}<br></br>
@@ -20,9 +19,9 @@ class CommentsList extends Component {
               timestamp={comment.timestamp}
               body={comment.body}
               author={comment.author}
-              commentvotes={comment.voteScore} 
-              />
-          </p>
+              commentvotes={comment.voteScore}
+            /><br></br>
+          </div>
         ))}
       </div>
     )

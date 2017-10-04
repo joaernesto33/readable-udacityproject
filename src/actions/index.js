@@ -3,12 +3,9 @@ export const GET_POST = 'GET_POST'
 export const GET_FILTERED_POSTS = 'GET_FILTERED_POSTS'
 export const FILTER_POSTS = 'FILTER_POSTS'
 export const ORDER_POSTS = 'ORDER_POSTS'
+export const REGISTER_TOTAL_COMMENTS = 'REGISTER_TOTAL_COMMENTS'
 export const GET_COMMENTS = 'GET_COMMENTS'
 export const ORDER_COMMENTS = 'ORDER_COMMENTS'
-export const ADD_COMMENT = 'ADD_COMMENT'
-export const SCORE_COMMENT = 'SCORE_COMMENT'
-export const EDIT_COMMENT = 'EDIT_COMMENT'
-export const DELETE_COMMENT = 'DELETE_COMMENT'
 export const GET_CATEGORIES = 'GET_CATEGORIES'
 
 export function getCategories (categories) {
@@ -53,6 +50,14 @@ export function orderPosts (orderoption) {
   }
 }
 
+export function registerComments (postid, totalcomments) {
+  return {
+    type: REGISTER_TOTAL_COMMENTS,
+    postid,
+    totalcomments,
+  }
+}
+
 
 export function getComments (comments) {
   return {
@@ -65,35 +70,5 @@ export function orderComments (orderoption) {
   return {
     type: ORDER_COMMENTS,
     orderoption,
-  }
-}
-
-export function addComment ({ comment }) {
-  return {
-    type: ADD_COMMENT,
-    comment,
-  }
-}
-
-export function scoreComment ({ idcomment, votes, option }) {
-  return {
-    type: SCORE_COMMENT,
-    idcomment,
-    votes,
-    option,
-  }
-}
-
-export function editComment ({ comment }) {
-  return {
-    type: EDIT_COMMENT,
-    comment,
-  }
-}
-
-export function deleteComment ({ comment }) {
-  return {
-    type: DELETE_COMMENT,
-    comment,
   }
 }

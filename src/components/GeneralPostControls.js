@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { getPost, getComments, registerComments } from '../actions'
+import { getPost, getComments } from '../actions'
 import * as PostAPI from '../utils/SeverAPI'
 import AddIcon from 'react-icons/lib/md/add-circle'
 import MinusIcon from 'react-icons/lib/md/remove-circle'
@@ -9,31 +9,6 @@ import MinusIcon from 'react-icons/lib/md/remove-circle'
 
 
 class GeneralPostControls extends Component {
-
-
-  /*componentDidMount () {
-    PostAPI.getPostComments(this.props.postid).then((comments) => {
-      let totalComments = []
-      totalComments = Object.values(comments)
-      this.props.totalCom(this.props.postid, totalComments.length)
-    })
-  }*/
-
-  /*commentsCount (postid) {
-    PostAPI.getPostComments(postid).then((comments) => {
-      this.props.detailComments(comments)
-    })
-  }*/
-
-  /*commentsCount (postid) {
-    PostAPI.getPostComments(postid).then((comments) => {
-      let totalComments = []
-      totalComments = Object.values(comments)
-      this.setState({
-        sumcomments: totalComments.length
-      })
-    })
-  }*/
 
   showingDetails = (idPosting) => {
     PostAPI.getPost(idPosting).then((post) => {
@@ -49,7 +24,7 @@ class GeneralPostControls extends Component {
   }
 
   render () {
-    console.log(this.props.sum);
+
 
     return (
       <pre>
@@ -61,8 +36,8 @@ class GeneralPostControls extends Component {
           <i><MinusIcon/></i>
         </button>
 
-        <em> {this.props.sum} Total comments </em>
-        <Link to = "/postdetail">
+        <em> {this.props.sumcomments} Total comments </em>
+        <Link to = {`${this.props.category}/${this.props.postid}`}>
           <label onClick={(event)=>this.showingDetails(this.props.postid)}>
             Show post details
           </label>
@@ -74,22 +49,15 @@ class GeneralPostControls extends Component {
 
 function mapStateToProps (state) {
   let stateposts = state.xpost.posts
-  let statecomment = state.xcomment.comments
-  let statetotals = []
-  statetotals = state.xpost
   return {
-    stateposts,
-    statecomment,
-    statetotals
+    stateposts
   }
 }
 
 function mapDispatchToProps (dispatch) {
   return {
     detailPost: (idPost) => dispatch(getPost(idPost)),
-    detailComments: (data) => dispatch(getComments(data)),
-    totalCom: (idPost, length) => dispatch(registerComments(idPost,length))
-
+    detailComments: (data) => dispatch(getComments(data))
   }
 }
 

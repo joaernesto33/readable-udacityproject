@@ -7,19 +7,6 @@ import LeftOrderOptions from './LeftOrderOptions'
 
 
 class PostsList extends Component {
-  /*state = {
-    sumcomments: 0,
-  }
-
-  commentsCount (postid) {
-    PostAPI.getPostComments(postid).then((comments) => {
-      let totalComments = []
-      totalComments = Object.values(comments)
-      this.setState({
-        sumcomments: totalComments.length
-      })
-    })
-  }*/
 
   componentDidMount () {
     PostAPI.getPosts().then((posts) => {
@@ -42,18 +29,6 @@ class PostsList extends Component {
       this.props.dispatch(getCategories(categories))
     })
   }
-
-  /*commentsCount (postid) {
-
-    PostAPI.getPostComments(postid).then((comments) => {
-      let totalComments = []
-      totalComments = Object.values(comments)
-      //this.props.dispatch(registerComments(post.id, totalComments.length))
-      return totalComments.length
-    })
-  }*/
-
-
 
   render() {
     let showPosts = []
@@ -93,10 +68,10 @@ class PostsList extends Component {
 
 
         <div className="maincontent">
-          <ol className="product-list">
+          <ol className="post-list">
             {showPosts.map((post,index) => (
-              <li key={index} className="product-list-item">
-                <div className="product-details">
+              <li key={index} className="post-list-item">
+                <div className="post-details">
                 Id: {post.id}<br></br>
                 TimeStamp: {post.timestamp}<br></br>
                 Title: {post.title}<br></br>
@@ -108,7 +83,8 @@ class PostsList extends Component {
                 <GeneralPostControls
                   votes={post.voteScore}
                   postid={post.id}
-                  sum={post.numOfcomments}
+                  sumcomments={post.numOfcomments}
+                  category={post.category}
                 />
               </div>
             </li>

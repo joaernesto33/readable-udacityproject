@@ -68,7 +68,6 @@ body, .app {
     color: white;
 }
 
-
 .icon-btn {
   background: none;
   border: none;
@@ -139,14 +138,14 @@ body, .app {
   font-size: 0;
 }
 
-.create-product-form {
+.create-post-form {
   padding: 20px;
   max-width: 500px;
   margin: 0 auto;
   display: flex;
 }
 
-.create-products-details input {
+.create-post-details input {
   width: 100%;
   padding: 5px 10px;
   margin-bottom: 10px;
@@ -157,32 +156,9 @@ body, .app {
   outline: 0;
 }
 
-/* ListProducts */
+/* ListPosts */
 
-.list-products {
-  padding-top: 60px;
-}
-.list-products-top {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  border-bottom: 1px solid #d5d8df;
-  display: flex;
-}
-
-.search-products {
-  width: 100%;
-  padding: 20px 20px 20px 60px;
-  /*background-image: url('./icons/search.svg');*/
-  background-repeat: no-repeat;
-  background-position: 20px center;
-  background-size: 1.2em;
-  font-size: 1.2em;
-  border: 0;
-  outline: none;
-}
-
-.add-product {
+.add-post {
   display: block;
   width: 73px;
   background: white;
@@ -193,27 +169,27 @@ body, .app {
   font-size: 0;
 }
 
-.product-list {
+.post-list {
   width: 100%;
   margin: 0;
   padding: 0;
   list-style-type: none;
 }
-.product-list-item {
+.post-list-item {
   padding: 20px;
   background: white;
   display: flex;
 }
 
 @media (min-width: 600px) {
-  .product-list-item {
+  .post-list-item {
     margin: 20px;
     border: 1px solid #d5d8df;
     border-radius: 4px;
   }
 }
 
-.product-details {
+.post-details {
   padding-left: 20px;
   border-left: 1px solid #eee;
 
@@ -224,7 +200,7 @@ body, .app {
   flex-direction: column;
   justify-content: center;
 }
-.product-details p {
+.post-details p {
   margin: 0;
   min-width: 0;
   white-space: nowrap;
@@ -232,20 +208,42 @@ body, .app {
   text-overflow: ellipsis;
 }
 
-.product-remove {
-  padding-left: 20px;
-  align-self: center;
-  width: 32px;
-  height: 32px;
-  background-color: transparent;
-  /*background-image: url('./icons/cancel.svg');*/
-  background-size: 100% 100%;
-  border: 0;
-  color: black;
-  font-size: 0;
-  vertical-align: middle;
-  cursor: pointer;
-  outline: none;
+.button {
+    position: relative;
+    background-color: #2F4F4F;
+    border: none;
+    font-size: 15px;
+    color: #FFFFFF;
+    padding: 20px;
+    width: 120px;
+    height: 30px;
+    line-height: 1px;
+    line-height: center;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.button:after {
+    content: "";
+    background: #f1f1f1;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px !important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s
+}
+
+.button:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
 }
 
 /*.footer {

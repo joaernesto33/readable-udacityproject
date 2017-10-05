@@ -16,11 +16,11 @@ class App extends Component {
       <div className="App">
 
         <div>
-          <Route exact path = "/" render = {( props ) => (
-            <DefaultView props={props}/>
+          <Route exact path = "/" render = {( ) => (
+            <DefaultView />
           )}/>
 
-          <Route exact path = "/categoryview" render = {() => (
+          <Route exact path = "/:category" render = {() => (
             <CategoryView/>
           )}/>
 
@@ -32,10 +32,10 @@ class App extends Component {
             <PostFormUpdate/>
           )}/>
 
-          <Route exact path = "/postdetail" render = {() => (
+          <Route exact path = "/:category/:post_id" render = {() => (
             <PostDetails/>
           )}/>
-        </div>      
+        </div>
 
       </div>
     );

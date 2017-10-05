@@ -70,8 +70,8 @@ class CommentControls extends Component {
             <div>
               <h2>Update the comment...</h2>
               <br></br>
-              <form onSubmit={this.handleUpdateComment} className="create-product-form">
-                <div className="create-products-details">
+              <form onSubmit={this.handleUpdateComment} className="create-post-form">
+                <div className="create-post-details">
                   <label><b>Comment Id</b></label>
                   <input type="text" id="id" name="id" defaultValue={this.props.commentid}></input>
 
@@ -87,10 +87,10 @@ class CommentControls extends Component {
                   <label><b>Author</b></label>
                   <input type="text" id="pauthor" name="author" defaultValue={this.props.author}></input>
 
-                  <button><b>Update!</b></button>
+                  <button className="button"><b>Update!</b></button>
                 </div>
               </form>
-              <button onClick={()=>this.closeEditModal()}>Close modal</button>
+              <button className="button" onClick={()=>this.closeEditModal()}>Close</button>
             </div>
         </Modal>
       </div>

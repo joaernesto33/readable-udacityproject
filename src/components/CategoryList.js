@@ -31,7 +31,7 @@ class LeftFilterCategory extends Component {
           </Link>
           {showCategories.map((category) => (
             <div key={category.name} onClick={(event)=>this.handleFilter(`${category.name}`)}>
-              <Link to='categoryview'>
+              <Link to={category.name}>
                 <label >
                     {category.name}
                 </label>

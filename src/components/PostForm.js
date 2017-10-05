@@ -20,8 +20,8 @@ class PostForm extends Component {
         <h2>Write a Post!</h2>
         <br></br>
         <br></br>
-        <form onSubmit={this.handlePostData} className="create-product-form">
-          <div className="create-products-details">
+        <form onSubmit={this.handlePostData} className="create-post-form">
+          <div className="create-post-details">
 
             <input type="text" id="pid" name="id" placeholder="Id..."></input>
             <input type="text" id="pid" name="timestamp" placeholder="timestamp"></input>
@@ -30,13 +30,13 @@ class PostForm extends Component {
             <input type="text" id="pauthor" name="author" placeholder="Author..."></input>
             <input type="text" id="pcat" name="category" placeholder="Category..."></input>
 
-            <button>
+            <button className="button">
               Save Post!
             </button>
           </div>
         </form>
 
-        <button >
+        <button className="button">
           <Link to = "/">Cancel</Link>
         </button>
 

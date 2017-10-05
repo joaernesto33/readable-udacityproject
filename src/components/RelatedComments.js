@@ -47,22 +47,22 @@ class RelatedComments extends Component {
             <div>
               <h2>Add a comment...</h2>
               <br></br>
-              <form onSubmit={this.handleCommentData} className="create-product-form">
-                <div className="create-products-details">
+              <form onSubmit={this.handleCommentData} className="create-post-form">
+                <div className="create-post-details">
 
                   <input type="text" id="id" name="id" placeholder="Post Id..."></input>
                   <input type="text" id="pId" name="parentId" value={this.props.postid}></input>
                   <input type="text" id="timest" name="timestamp" placeholder="Timestamp..."></input>
                   <input type="text" id="pbody" name="body" placeholder="Write the body of the post..."></input>
                   <input type="text" id="pauthor" name="author" placeholder="Author's name..."></input>
-                  <button>
+                  <button className="button">
                     Save
                   </button>
 
                 </div>
 
               </form>
-              <button onClick={()=>this.closeCommentModal()}>Close modal</button>
+              <button className="button" onClick={()=>this.closeCommentModal()}>Close</button>
             </div>
           </Modal>
       </div>

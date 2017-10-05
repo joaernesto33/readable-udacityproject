@@ -18,8 +18,8 @@ class PostFormUpdate extends Component {
         <h2>Update the Post!</h2>
         <br></br>
         <br></br>
-        <form onSubmit={this.handlePostData} className="create-product-form">
-          <div className="create-products-details">
+        <form onSubmit={this.handlePostData} className="create-post-form">
+          <div className="create-post-details">
 
           <label><b>Id:</b></label>
             <input type="text" id="pid" name="id" value={this.props.statepost.id}></input><br></br>
@@ -38,12 +38,12 @@ class PostFormUpdate extends Component {
 
             <label><b>Category</b></label>
             <input type="text" id="pcat" name="category" defaultValue={this.props.statepost.category}></input>
-            <button>
-              Update the post
+            <button className="button">
+              Update
             </button>
           </div>
         </form>
-        <button className="button1">
+        <button className="button">
           <Link to = "/">Cancel</Link>
         </button>
 

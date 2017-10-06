@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { getPost, getComments } from '../actions'
+import { getPost, getComments, getPosts, registerComments } from '../actions'
 import * as PostAPI from '../utils/SeverAPI'
 import AddIcon from 'react-icons/lib/md/add-circle'
 import MinusIcon from 'react-icons/lib/md/remove-circle'
@@ -19,8 +19,27 @@ class GeneralPostControls extends Component {
     })
   }
 
+  votingAction = () => {
+    PostAPI.getPosts().then((posts) => {
+      this.props.getAllPosts(posts)
+
+      let totalPosts = []
+      totalPosts = Object.values(posts)
+      totalPosts.forEach( post => {
+        PostAPI.getPostComments(post.id).then((comments) => {
+          let totalComments = []
+          totalComments = Object.values(comments)
+          this.props.getTotalComments(post.id, totalComments.length)
+        })
+      })
+
+    })
+  }
+
   postVote = (idPost, voteOption) => {
-    PostAPI.votingPost(idPost, voteOption)
+    PostAPI.votingPost(idPost, voteOption).then(
+      this.votingAction()
+    )
   }
 
   render () {
@@ -57,7 +76,9 @@ function mapStateToProps (state) {
 function mapDispatchToProps (dispatch) {
   return {
     detailPost: (idPost) => dispatch(getPost(idPost)),
-    detailComments: (data) => dispatch(getComments(data))
+    detailComments: (data) => dispatch(getComments(data)),
+    getAllPosts: (posts) => dispatch(getPosts(posts)),
+    getTotalComments: (postid, totalComments)=>dispatch(registerComments(postid, totalComments))
   }
 }
 

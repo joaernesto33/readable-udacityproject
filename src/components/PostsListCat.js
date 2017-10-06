@@ -1,33 +1,9 @@
 import React, { Component } from 'react'
 import GeneralPostControls from './GeneralPostControls'
-import { getPosts, getCategories, registerComments } from '../actions/index'
-import * as PostAPI from '../utils/SeverAPI'
 import { connect } from 'react-redux'
 
 
-class PostsList extends Component {
-
-  componentDidMount () {
-    PostAPI.getPosts().then((posts) => {
-      this.props.dispatch(getPosts(posts))
-
-      let totalPosts = []
-      totalPosts = Object.values(posts)
-      totalPosts.forEach( post => {
-        PostAPI.getPostComments(post.id).then((comments) => {
-          let totalComments = []
-          totalComments = Object.values(comments)
-          this.props.dispatch(registerComments(post.id, totalComments.length))
-        })
-      })
-
-    })
-
-
-    PostAPI.getCategories().then((categories) => {
-      this.props.dispatch(getCategories(categories))
-    })
-  }
+class PostsListCat extends Component {
 
   render() {
     let showPosts = []
@@ -103,4 +79,4 @@ function mapStateToProps (state) {
 }
 
 
-export default connect(mapStateToProps)(PostsList)
+export default connect(mapStateToProps)(PostsListCat)

@@ -13,7 +13,11 @@ class PostDetails extends Component {
     totalComments = Object.values(this.props.statecomment)
     return (
       <div>
-        <h1>This is PostDetails component</h1>
+        <div className="list-posts-title">
+          <h1>Readable Project</h1>
+        </div>
+
+        <h2>Post Details Summary</h2>
         <div className="row">
           <RightDetailsOptions/>
           <div className="column right">
@@ -30,8 +34,8 @@ class PostDetails extends Component {
             <div>
               <RelatedComments totalcomments={totalComments.length} postid={statepost.id}/>
             </div>
-            <h2>Comments:</h2>
-            <CommentsList />
+            <h3>Comments:</h3>
+            <CommentsList/>
           </div>
         </div>
 

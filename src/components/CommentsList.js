@@ -13,6 +13,7 @@ class CommentsList extends Component {
             Author: {comment.author}<br></br>
             Body: {comment.body}<br></br>
             Comment Vote Score: {comment.voteScore}<br></br>
+            Timestamp: {comment.timestamp}
             <CommentControls
               commentid={comment.id}
               parentid={comment.parentId}

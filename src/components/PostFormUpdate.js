@@ -10,12 +10,21 @@ class PostFormUpdate extends Component {
   handlePostData = (postdata) => {
     postdata.preventDefault()
     const values = serializeForm(postdata.target, { hash: true})
-    PostAPI.updatePost(this.props.statepost.id, values)
+    PostAPI.updatePost(this.props.statepost.id, values).then(
+      this.props.history.push("/")
+    )
   }
   render () {
     return (
       <div>
-        <h2>Update the Post!</h2>
+
+        <div className="list-posts-title">
+          <h1>Readable Project</h1>
+        </div>
+        <br></br>
+        <br></br>
+
+        <h2>Update the Post...</h2>
         <br></br>
         <br></br>
         <form onSubmit={this.handlePostData} className="create-post-form">
@@ -41,11 +50,22 @@ class PostFormUpdate extends Component {
             <button className="button">
               Update
             </button>
+
+            <Link to = "/">
+            &nbsp;&nbsp;&nbsp;<button className="button">
+              Cancel
+            </button>
+            </Link>
           </div>
         </form>
-        <button className="button">
-          <Link to = "/">Cancel</Link>
-        </button>
+
+        <br></br>
+        <br></br>
+        <div className="footer">
+            <p>Udacity Readable - Posted by: &copy;Jokin 2017</p>
+            <p>Contact information: joaernesto33@gmail.com.</p>
+        </div>
+
 
       </div>
     )

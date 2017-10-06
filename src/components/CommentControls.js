@@ -6,6 +6,8 @@ import EditIcon from 'react-icons/lib/md/create'
 import RemoveIcon from 'react-icons/lib/md/clear'
 import AddIcon from 'react-icons/lib/md/add-circle'
 import MinusIcon from 'react-icons/lib/md/remove-circle'
+import { getComments } from '../actions'
+import { connect } from 'react-redux'
 
 class CommentControls extends Component {
   state ={
@@ -31,7 +33,15 @@ class CommentControls extends Component {
   handleUpdateComment = (commentdata) => {
     commentdata.preventDefault()
     const commentbody = serializeForm(commentdata.target, { hash:true })
-    PostAPI.updateComment(this.props.commentid, commentbody)
+    PostAPI.updateComment(this.props.commentid, commentbody).then(
+      this.setState(() => ({
+        editModalOpen: false,
+      }))
+    ).then(
+      PostAPI.getPostComments(this.props.parentid).then((comments) => {
+        this.props.detailComments(comments)
+      })
+    )
   }
 
   commentVote = (idcomment, voteoption) => {
@@ -88,9 +98,13 @@ class CommentControls extends Component {
                   <input type="text" id="pauthor" name="author" defaultValue={this.props.author}></input>
 
                   <button className="button"><b>Update!</b></button>
+
+                  &nbsp;&nbsp;&nbsp;<button className="button" onClick={()=>this.closeEditModal()}>Close</button>
                 </div>
+
+
               </form>
-              <button className="button" onClick={()=>this.closeEditModal()}>Close</button>
+
             </div>
         </Modal>
       </div>
@@ -99,4 +113,17 @@ class CommentControls extends Component {
   }
 }
 
-export default CommentControls
+
+function mapStateToProps (state) {
+  return {
+    state
+  }
+}
+
+function mapDispatchToProps (dispatch) {
+  return {
+    detailComments: (data) => dispatch(getComments(data))
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(CommentControls)

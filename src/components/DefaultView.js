@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import PostsList from './PostsList'
 import CategoryList from './CategoryList'
-import { Link } from 'react-router-dom'
 import LeftOrderOptions from './LeftOrderOptions'
 
 
@@ -17,11 +16,6 @@ export default class DefaultView extends Component {
           <h1>Readable Project</h1>
         </div>
 
-        <div className="open-addform">
-          <Link to = "/postform">Add Post</Link>
-        </div>
-
-        <h2>This is DefaultView Component</h2>
         <LeftOrderOptions/>
 
         <div className="row">
@@ -30,9 +24,8 @@ export default class DefaultView extends Component {
         </div>
 
         <div className="footer">
-          <footer>
-            <p>Udacity Readable - Post by: Jokin 2017</p>
-          </footer>
+            <p>Udacity Readable - Posted by: &copy;Jokin 2017</p>
+            <p>Contact information: joaernesto33@gmail.com.</p>
         </div>
 
     </div>

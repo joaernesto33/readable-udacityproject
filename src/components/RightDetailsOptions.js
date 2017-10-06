@@ -7,7 +7,14 @@ export default class RightDetailsOptions extends Component {
       <div className="column left">
         <div className="vertical-menu">
           <Link to = "/">Go to default view</Link>
-          <Link to = "categoryview">Go to category view</Link>
+
+          <br></br>
+          <br></br>
+          <div className="center">Add a new post!</div>
+          <div className="open-addform">
+            <Link to = "/postform">Add Post</Link>
+          </div>
+
         </div>
       </div>
     )

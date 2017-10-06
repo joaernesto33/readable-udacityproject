@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import CategoryList from './CategoryList'
+import RightDetailsOptions from './RightDetailsOptions'
 import LeftOrderOptions from './LeftOrderOptions'
-import PostsList from './PostsList'
+import PostsListCat from './PostsListCat'
 
 
 export default class CategoryView extends Component {
@@ -10,24 +9,21 @@ export default class CategoryView extends Component {
     return (
       <div>
 
-        <main className="mdl-layout__content">
-        <div className="page-content">
-          <h2>This is CategoryView Component</h2>
-          <button>
-            <Link to = "/postform">Add Post!</Link>
-          </button>
-
-          <div className="row">
-          <CategoryList/>
-          <PostsList/>
-          </div>
-
-          <div className="footer">
-            <p>Udacity Readable - Post by: Jokin 2017</p>
-            <button><Link to = "/">Go to index view</Link></button>
-          </div>
+        <div className="list-posts-title">
+          <h1>Readable Project</h1>
         </div>
-        </main>
+
+        <LeftOrderOptions/>
+
+        <div className="row">
+        <RightDetailsOptions/>
+        <PostsListCat/>
+        </div>
+
+        <div className="footer">
+            <p>Udacity Readable - Posted by: &copy;Jokin 2017</p>
+            <p>Contact information: joaernesto33@gmail.com.</p>
+        </div>
 
     </div>
     )

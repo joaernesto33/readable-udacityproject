@@ -67,7 +67,6 @@ function xpost (state = postInitialState, action) {
       const newstate = {...state}
 
       newstate.posts.forEach( post => {
-        console.log(post.id === action.postid);
         if( post.id === action.postid){
           post.numOfcomments = action.totalcomments
         }

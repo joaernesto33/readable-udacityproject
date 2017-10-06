@@ -3,6 +3,8 @@ import Modal from 'react-modal'
 import serializeForm from 'form-serialize'
 import * as PostAPI from '../utils/SeverAPI'
 import AddCommentIcon from 'react-icons/lib/fa/commenting'
+import { getComments } from '../actions'
+import { connect } from 'react-redux'
 
 
 class RelatedComments extends Component {
@@ -25,7 +27,15 @@ class RelatedComments extends Component {
   handleCommentData = (commentdata) => {
     commentdata.preventDefault()
     const commentbody = serializeForm(commentdata.target, {hash: true})
-    PostAPI.addComment(commentbody).then(console.log('comment added'))
+    PostAPI.addComment(commentbody).then(
+      this.setState(() => ({
+        commentsModalOpen: false,
+      }))
+    ).then(
+      PostAPI.getPostComments(this.props.postid).then((comments) => {
+        this.props.detailComments(comments)
+      })
+    )
   }
 
   render () {
@@ -52,17 +62,16 @@ class RelatedComments extends Component {
 
                   <input type="text" id="id" name="id" placeholder="Post Id..."></input>
                   <input type="text" id="pId" name="parentId" value={this.props.postid}></input>
-                  <input type="text" id="timest" name="timestamp" placeholder="Timestamp..."></input>
+                  <input type="hidden" id="timest" name="timestamp" value={Date.now()}></input>
                   <input type="text" id="pbody" name="body" placeholder="Write the body of the post..."></input>
                   <input type="text" id="pauthor" name="author" placeholder="Author's name..."></input>
                   <button className="button">
                     Save
                   </button>
-
+                  &nbsp;&nbsp;&nbsp;<button className="button" onClick={()=>this.closeCommentModal()}>Close</button>
                 </div>
-
               </form>
-              <button className="button" onClick={()=>this.closeCommentModal()}>Close</button>
+
             </div>
           </Modal>
       </div>
@@ -70,4 +79,17 @@ class RelatedComments extends Component {
   }
 }
 
-export default RelatedComments
+
+function mapStateToProps (state) {
+  return {
+    state
+  }
+}
+
+function mapDispatchToProps (dispatch) {
+  return {
+    detailComments: (data) => dispatch(getComments(data))
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(RelatedComments)

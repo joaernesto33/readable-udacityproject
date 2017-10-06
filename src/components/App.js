@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import '../App.css';
 import DefaultView from './DefaultView'
 import CategoryView from './CategoryView'
 import PostForm from './PostForm'
 import PostDetails from './PostDetails'
 import PostFormUpdate from './PostFormUpdate'
-import { Link } from 'react-router-dom'
 
 
 class App extends Component {
@@ -20,17 +19,16 @@ class App extends Component {
             <DefaultView />
           )}/>
 
-          <Route exact path = "/:category" render = {() => (
-            <CategoryView/>
-          )}/>
+          <Switch>
+            <Route exact path = "/postform" component = {PostForm}/>
 
-          <Route exact path = "/postform" render = {() => (
-            <PostForm/>
-          )}/>
+            <Route exact path = "/postupdate" component = {PostFormUpdate}/>
 
-          <Route exact path = "/postupdate" render = {() => (
-            <PostFormUpdate/>
-          )}/>
+            <Route exact path = "/:category" render = {() => (
+              <CategoryView/>
+            )}/>
+        </Switch>
+
 
           <Route exact path = "/:category/:post_id" render = {() => (
             <PostDetails/>

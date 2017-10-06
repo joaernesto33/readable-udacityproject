@@ -8,8 +8,8 @@ class LeftFilterCategory extends Component {
 
   handleFilter = (categoryName) => {
     PostAPI.getCategoryPosts(categoryName).then((posts) => {
-      this.props.updatePosts(posts)
       this.props.filterCategory(categoryName)
+      this.props.updatePosts(posts)
     })
 
   }
@@ -26,18 +26,24 @@ class LeftFilterCategory extends Component {
       <div className="column left">
         <div className="vertical-menu">
 
-          <Link to='/'>
-            <label>All Categories</label>
-          </Link>
-          {showCategories.map((category) => (
-            <div key={category.name} onClick={(event)=>this.handleFilter(`${category.name}`)}>
-              <Link to={category.name}>
-                <label >
-                    {category.name}
-                </label>
+
+          <p>All Categories</p>
+
+          {showCategories.map((category, index) => (
+            <div key={index} onClick={(event)=>this.handleFilter(`${category.name}`)}>
+              <Link to={`${category.name}`}>
+                {category.name}
               </Link>
             </div>
           ))}
+
+          <br></br>
+          <br></br>
+          <div className="center">Add a new post!</div>
+          <div className="open-addform">
+            <Link to = "/postform">Add Post</Link>
+          </div>
+
         </div>
 
     </div>

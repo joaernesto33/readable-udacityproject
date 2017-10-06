@@ -12,11 +12,20 @@ class PostForm extends Component {
     const values = serializeForm(postdata.target, { hash: true})
     PostAPI.addPost(values).then((posts) => {
       this.props.createPost(posts)
+      this.props.history.push("/")
+
     })
   }
   render () {
     return (
       <div>
+
+        <div className="list-posts-title">
+          <h1>Readable Project</h1>
+        </div>
+        <br></br>
+        <br></br>
+
         <h2>Write a Post!</h2>
         <br></br>
         <br></br>
@@ -24,21 +33,33 @@ class PostForm extends Component {
           <div className="create-post-details">
 
             <input type="text" id="pid" name="id" placeholder="Id..."></input>
-            <input type="text" id="pid" name="timestamp" placeholder="timestamp"></input>
+            <input type="text" id="pid" name="timestamp" value={Date.now()}></input>
             <input type="text" id="ptitle" name="title" placeholder="Title..."></input>
             <input type="text" id="pbody" name="body" placeholder="Write a body..."></input>
             <input type="text" id="pauthor" name="author" placeholder="Author..."></input>
             <input type="text" id="pcat" name="category" placeholder="Category..."></input>
 
             <button className="button">
-              Save Post!
+              Save
             </button>
+
+            <Link to = "/">
+            &nbsp;&nbsp;&nbsp;<button className="button">
+              Cancel
+            </button>
+            </Link>
+
           </div>
         </form>
 
-        <button className="button">
-          <Link to = "/">Cancel</Link>
-        </button>
+
+
+        <br></br>
+        <br></br>
+        <div className="footer">
+            <p>Udacity Readable - Posted by: &copy;Jokin 2017</p>
+            <p>Contact information: joaernesto33@gmail.com.</p>
+        </div>
 
       </div>
     )

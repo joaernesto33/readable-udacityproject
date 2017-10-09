@@ -36,8 +36,14 @@ class PostForm extends Component {
             <input type="text" id="pid" name="timestamp" value={Date.now()}></input>
             <input type="text" id="ptitle" name="title" placeholder="Title..."></input>
             <input type="text" id="pbody" name="body" placeholder="Write a body..."></input>
-            <input type="text" id="pauthor" name="author" placeholder="Author..."></input>
+            <input type="text" id="pauthor" name="author" placeholder="Author..."></input
+
             <input type="text" id="pcat" name="category" placeholder="Category..."></input>
+            <select>
+              <option value="react">react</option>
+              <option value="redux">redux</option>
+              <option value="udacity">udacity</option>
+            </select>
 
             <button className="button">
               Save

@@ -47,6 +47,13 @@ class PostFormUpdate extends Component {
 
             <label><b>Category</b></label>
             <input type="text" id="pcat" name="category" defaultValue={this.props.statepost.category}></input>
+
+            <select defaultValue={this.props.statepost.category}>
+              <option value="react">react</option>
+              <option value="redux">redux</option>
+              <option value="udacity">udacity</option>
+            </select>
+
             <button className="button">
               Update
             </button>

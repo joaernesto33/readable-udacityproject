@@ -11,10 +11,10 @@ class LeftOrderOptions extends Component {
         Sort by:
         <span>
           <select defaultValue="timeStamp" onChange={(event) => this.props.updateSort(event.target.value)}>
-            <option value="none" disabled>Order by...</option>
-            <option value="timeStamp">Order by voteScore</option>
-            <option value="alfabethical">Order by timestamp</option>
-            <option value="voteScore">Order alfabethical</option>
+            <option value="none" disabled>Ascendent order by...</option>
+            <option value="timeStamp">Order by TimeStamp</option>
+            <option value="alfabethical">Order by Title</option>
+            <option value="voteScore">Order by VoteScore</option>
           </select>
         </span>
 

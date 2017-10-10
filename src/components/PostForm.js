@@ -33,27 +33,33 @@ class PostForm extends Component {
           <div className="create-post-details">
 
             <input type="text" id="pid" name="id" placeholder="Id..."></input>
-            <input type="text" id="pid" name="timestamp" value={Date.now()}></input>
+            <input type="hidden" id="pid" name="timestamp" value={Date.now()}></input>
             <input type="text" id="ptitle" name="title" placeholder="Title..."></input>
             <input type="text" id="pbody" name="body" placeholder="Write a body..."></input>
-            <input type="text" id="pauthor" name="author" placeholder="Author..."></input
+            <input type="text" id="pauthor" name="author" placeholder="Author..."></input>
+            <div>
+              Category: &nbsp;&nbsp;
+              <select name="category">
+                <option value="react">react</option>
+                <option value="redux">redux</option>
+                <option value="udacity">udacity</option>
+              </select>
+            </div>
 
-            <input type="text" id="pcat" name="category" placeholder="Category..."></input>
-            <select>
-              <option value="react">react</option>
-              <option value="redux">redux</option>
-              <option value="udacity">udacity</option>
-            </select>
+            <div>
 
-            <button className="button">
-              Save
-            </button>
+              <br></br>
+              <hr width="100%"></hr>
+              <button className="button">
+                Save
+              </button>&nbsp;&nbsp;&nbsp;
 
-            <Link to = "/">
-            &nbsp;&nbsp;&nbsp;<button className="button">
-              Cancel
-            </button>
-            </Link>
+              <Link to = "/">
+              <button className="button">
+                Cancel
+              </button>
+              </Link>
+            </div>
 
           </div>
         </form>

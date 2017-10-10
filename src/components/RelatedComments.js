@@ -43,10 +43,13 @@ class RelatedComments extends Component {
 
     return (
       <div>
-        <hr width="850"></hr>
+        <hr width="100%"></hr>
+
         <h3>Related comments</h3>
         <em>{this.props.totalcomments} comments &nbsp;&nbsp;</em>
         <button onClick={()=>this.openCommentModal()}>Add Comment! <AddCommentIcon /> </button>
+
+        <hr width="100%"></hr>
 
         <Modal
           overlayClassName='overlay'
@@ -61,10 +64,12 @@ class RelatedComments extends Component {
                 <div className="create-post-details">
 
                   <input type="text" id="id" name="id" placeholder="Post Id..."></input>
-                  <input type="text" id="pId" name="parentId" value={this.props.postid}></input>
+                  <input type="hidden" id="pId" name="parentId" value={this.props.postid}></input>
                   <input type="hidden" id="timest" name="timestamp" value={Date.now()}></input>
                   <input type="text" id="pbody" name="body" placeholder="Write the body of the post..."></input>
                   <input type="text" id="pauthor" name="author" placeholder="Author's name..."></input>
+                  <br></br>
+                  <br></br>
                   <button className="button">
                     Save
                   </button>

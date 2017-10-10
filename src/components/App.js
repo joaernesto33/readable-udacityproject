@@ -15,24 +15,17 @@ class App extends Component {
       <div className="App">
 
         <div>
-          <Route exact path = "/" render = {( ) => (
-            <DefaultView />
-          )}/>
+          <Route exact path = "/" component = {DefaultView}/>
 
           <Switch>
             <Route exact path = "/postform" component = {PostForm}/>
 
-            <Route exact path = "/postupdate" component = {PostFormUpdate}/>
+            <Route exact path = "/postupdate/:post_id" component = {PostFormUpdate}/>
 
-            <Route exact path = "/:category" render = {() => (
-              <CategoryView/>
-            )}/>
-        </Switch>
+            <Route exact path = "/:category" component = {CategoryView}/>
+          </Switch>
 
-
-          <Route exact path = "/:category/:post_id" render = {() => (
-            <PostDetails/>
-          )}/>
+          <Route exact path = "/:category/:post_id" component = {PostDetails}/>
         </div>
 
       </div>

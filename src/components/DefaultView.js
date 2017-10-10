@@ -20,7 +20,7 @@ export default class DefaultView extends Component {
 
         <div className="row">
         <CategoryList/>
-        <PostsList/>
+        <PostsList history={this.props.history}/>
         </div>
 
         <div className="footer">

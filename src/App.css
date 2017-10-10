@@ -17,6 +17,13 @@ body, .app {
   background: #f5f5f5;
 }
 
+mark {
+  background-color: Black;
+  color: #F8F8FF;
+  border-radius:10px;
+  padding:3px;
+}
+
 .textright {
     text-align: right;
 }
@@ -102,7 +109,6 @@ body, .app {
 
 .list-posts-title {
   padding: 10px 0;
-  /*background: #2e7c31;*/
   background: #2F4F4F;
   text-align: center;
 }
@@ -116,7 +122,6 @@ body, .app {
   display: block;
   width: 60px;
   height: 60px;
-  /*background-image: url('./icons/arrow-back.svg');*/
   background-position: center;
   background-repeat: no-repeat;
   background-size: 30px;
@@ -147,7 +152,6 @@ body, .app {
   display: block;
   width: 73px;
   background: white;
-  /*background-image: url('./icons/person-add.svg');*/
   background-repeat: no-repeat;
   background-position: center;
   background-size: 28px;

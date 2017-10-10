@@ -1,20 +1,36 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { getPost, getComments, getPosts, registerComments } from '../actions'
 import * as PostAPI from '../utils/SeverAPI'
 import AddIcon from 'react-icons/lib/md/add-circle'
 import MinusIcon from 'react-icons/lib/md/remove-circle'
+import EditIcon from 'react-icons/lib/md/create'
+import RemoveIcon from 'react-icons/lib/md/clear'
 
 
 
 class GeneralPostControls extends Component {
+  state = {
+    redirect: false,
+    post: ''
+  }
 
   showingDetails = (idPosting) => {
     PostAPI.getPost(idPosting).then((post) => {
       this.props.detailPost(post)
       PostAPI.getPostComments(post.id).then((comments) => {
         this.props.detailComments(comments)
+      })
+    })
+  }
+
+  showingUpdate = (idPosting) => {
+    PostAPI.getPost(idPosting).then((post) => {
+      this.props.detailPost(post)
+      this.setState({
+        redirect: true,
+        post: post.id
       })
     })
   }
@@ -42,12 +58,25 @@ class GeneralPostControls extends Component {
     )
   }
 
+  handleRemove = (idPost) => {
+    let r = window.confirm("Are you sure")
+    if (r) {
+      PostAPI.deletePost(idPost).then(
+        PostAPI.getPosts().then((posts) => {
+          this.props.getAllPosts(posts)
+        })
+      )
+    }
+  }
+
   render () {
 
-
+    if (this.state.redirect) {
+      return <Redirect to={`postupdate/${this.state.post}`}/>
+    }
     return (
       <pre>
-        <mark>Votes {this.props.votes} </mark>
+        <mark> Votes:<b> {this.props.votes} </b></mark>
         <button className="icon-btn" onClick={(e)=>this.postVote(this.props.postid, 'upVote')}>
           <i><AddIcon/></i>
         </button>
@@ -61,6 +90,16 @@ class GeneralPostControls extends Component {
             Show post details
           </label>
         </Link>
+
+
+        <button className="icon-btn" onClick={(e)=>this.showingUpdate(this.props.postid)}>
+          <i><EditIcon/></i>
+        </button>
+
+
+        <button className="icon-btn" onClick={(e)=>this.handleRemove(this.props.postid)}>
+          <i><RemoveIcon/></i>
+        </button>
       </pre>
     )
   }

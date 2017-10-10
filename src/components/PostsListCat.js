@@ -42,18 +42,19 @@ class PostsListCat extends Component {
       <div className="column right">
 
         <div className="maincontent">
+
+          <h3>{this.props.category.toUpperCase()} CATEGORY POSTS</h3>
+
           <ol className="post-list">
             {showPosts.map((post,index) => (
               <li key={index} className="post-list-item">
                 <div className="post-details">
-                Id: {post.id}<br></br>
-                TimeStamp: {post.timestamp}<br></br>
                 Title: {post.title}<br></br>
-                Body: {post.body}<br></br>
                 Author: {post.author}<br></br>
+                Current Score: {post.voteScore}<br></br>
+                Body: {post.body}<br></br>
                 Category: {post.category}<br></br>
-                Vote Score: {post.voteScore}<br></br>
-
+                <hr width="100%" noshade></hr>
                 <GeneralPostControls
                   votes={post.voteScore}
                   postid={post.id}

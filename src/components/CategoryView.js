@@ -1,10 +1,21 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { filterPosts, getFilteredPosts } from '../actions'
 import RightDetailsOptions from './RightDetailsOptions'
 import LeftOrderOptions from './LeftOrderOptions'
 import PostsListCat from './PostsListCat'
+import * as PostAPI from '../utils/SeverAPI'
 
 
-export default class CategoryView extends Component {
+class CategoryView extends Component {
+
+  componentDidMount() {
+    PostAPI.getCategoryPosts(this.props.match.params.category).then((posts) => {
+      this.props.filterCategory(this.props.match.params.category)
+      this.props.updatePosts(posts)
+    })
+  }
+
   render () {
     return (
       <div>
@@ -17,7 +28,7 @@ export default class CategoryView extends Component {
 
         <div className="row">
         <RightDetailsOptions/>
-        <PostsListCat/>
+        <PostsListCat category={this.props.match.params.category}/>
         </div>
 
         <div className="footer">
@@ -29,3 +40,19 @@ export default class CategoryView extends Component {
     )
   }
 }
+
+function mapStateToProps (state) {
+  let statecats = state.xcat
+  return {
+    statecats
+  }
+}
+
+function mapDispatchToProps (dispatch) {
+  return {
+    filterCategory: (data) => dispatch(filterPosts(data)),
+    updatePosts: (data) => dispatch(getFilteredPosts(data))
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(CategoryView)

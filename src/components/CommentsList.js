@@ -10,10 +10,10 @@ class CommentsList extends Component {
       <div>
         {showComments.map((comment) => (
           <div key={comment.id}>
-            Author: {comment.author}<br></br>
             Body: {comment.body}<br></br>
-            Comment Vote Score: {comment.voteScore}<br></br>
-            Timestamp: {comment.timestamp}
+            Author: {comment.author}<br></br>
+            Current Score: {comment.voteScore}<br></br>
+          
             <CommentControls
               commentid={comment.id}
               parentid={comment.parentId}

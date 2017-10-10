@@ -4,9 +4,21 @@ import { connect } from 'react-redux'
 import CommentsList from './CommentsList'
 import PostDetailsControls from './PostDetailsControls'
 import RelatedComments from './RelatedComments'
+import * as PostAPI from '../utils/SeverAPI'
+import { getPost, getComments }from '../actions'
 
 
 class PostDetails extends Component {
+
+  componentDidMount () {
+    PostAPI.getPost(this.props.match.params.post_id).then((post) => {
+      this.props.detailPost(post)
+      PostAPI.getPostComments(post.id).then((comments) => {
+        this.props.detailComments(comments)
+      })
+    })
+  }
+
   render () {
     let totalComments = []
     let { statepost } = this.props
@@ -29,7 +41,7 @@ class PostDetails extends Component {
               Author: {statepost.author}<br></br>
               Category: {statepost.category}<br></br>
               Vote Score: {statepost.voteScore}<br></br>
-            <PostDetailsControls postid={statepost.id}/>
+            <PostDetailsControls postid={statepost.id} history={this.props.history}/>
             </div>
             <div>
               <RelatedComments totalcomments={totalComments.length} postid={statepost.id}/>
@@ -57,4 +69,13 @@ function mapStateToProps (state) {
     statecomment
   }
 }
-export default connect(mapStateToProps)(PostDetails)
+
+function mapDispatchToProps (dispatch){
+  return{
+    detailPost: (idPost) => dispatch(getPost(idPost)),
+    detailComments: (data) => dispatch(getComments(data))
+  }
+
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(PostDetails)

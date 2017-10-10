@@ -7,13 +7,19 @@ import RemoveIcon from 'react-icons/lib/md/clear'
 
 class PostDetailsControls extends Component {
   handleRemove = (idPost) => {
-    PostAPI.deletePost(idPost)
+    let r = window.confirm("Are you sure")
+    if (r) {
+      PostAPI.deletePost(idPost).then(
+        this.props.history.push("/")
+      )
+    }
+
   }
 
   render () {
     return (
       <div>
-        <Link to = "/postupdate">
+        <Link to = {`/postupdate/${this.props.statepost.id}`}>
           <button className="icon-btn">
             <i><EditIcon/></i>
           </button>

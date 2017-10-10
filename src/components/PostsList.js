@@ -70,25 +70,27 @@ class PostsList extends Component {
             {showPosts.map((post,index) => (
               <li key={index} className="post-list-item">
                 <div className="post-details">
+                Title: {post.title}<br></br>
+                Author: {post.author}<br></br>
+                Current Score: {post.voteScore} votes<br></br>
+                Body: {post.body}<br></br>
+                Category: {post.category}<br></br>
+                <br></br>
                 Id: {post.id}<br></br>
                 TimeStamp: {post.timestamp}<br></br>
-                Title: {post.title}<br></br>
-                Body: {post.body}<br></br>
-                Author: {post.author}<br></br>
-                Category: {post.category}<br></br>
-                Vote Score: {post.voteScore}<br></br>
-
+                <hr width="100%"></hr>
                 <GeneralPostControls
                   votes={post.voteScore}
                   postid={post.id}
                   sumcomments={post.numOfcomments}
                   category={post.category}
+                  history={this.props.history}
                 />
               </div>
             </li>
           ))}
         </ol>
-        </div>
+      </div>
 
     </div>
     )

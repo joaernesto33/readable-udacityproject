@@ -38,14 +38,20 @@ class CommentControls extends Component {
         editModalOpen: false,
       }))
     ).then(
-      PostAPI.getPostComments(this.props.parentid).then((comments) => {
-        this.props.detailComments(comments)
-      })
+      this.commentsHandler()
     )
   }
 
+  commentsHandler = () => {
+    PostAPI.getPostComments(this.props.parentid).then((comments) => {
+      this.props.detailComments(comments)
+    })
+  }
+
   commentVote = (idcomment, voteoption) => {
-    PostAPI.votingComment(idcomment, voteoption)
+    PostAPI.votingComment(idcomment, voteoption).then(
+      this.commentsHandler()
+    )
   }
 
 
@@ -54,8 +60,8 @@ class CommentControls extends Component {
 
     return (
       <div>
-        <font>
-          <mark>{this.props.commentvotes} Votes</mark>
+        <pre>
+          <mark> Votes:<b> {this.props.commentvotes} </b></mark>
           <button  className="icon-btn" onClick={(e)=>this.commentVote(this.props.commentid,'upVote')}>
             <i><AddIcon/></i>
           </button>
@@ -68,7 +74,7 @@ class CommentControls extends Component {
           <button className="icon-btn" onClick={(e)=>this.handleRemoveComment(this.props.commentid)}>
             <i><RemoveIcon/></i>
           </button>
-        </font>
+        </pre>
 
 
         <Modal
@@ -85,11 +91,8 @@ class CommentControls extends Component {
                   <label><b>Comment Id</b></label>
                   <input type="text" id="id" name="id" defaultValue={this.props.commentid}></input>
 
-                  <label><b>Parent Id</b></label>
-                  <input type="text" id="pId" name="parentId" value={this.props.parentid}></input>
-
-                  <label><b>Timestamp</b></label>
-                  <input type="text" id="timest" name="timestamp" defaultValue={this.props.timestamp}></input>
+                  <input type="hidden" id="pId" name="parentId" value={this.props.parentid}></input>
+                  <input type="hidden" id="timest" name="timestamp" defaultValue={this.props.timestamp}></input>
 
                   <label><b>Body</b></label>
                   <input type="text" id="pbody" name="body" defaultValue={this.props.body}></input>

@@ -27,7 +27,12 @@ class CommentControls extends Component {
   }
 
   handleRemoveComment = (idComment) => {
-    PostAPI.deleteComment(idComment)
+    let r = window.confirm("Are you sure?")
+    if (r) {
+      PostAPI.deleteComment(idComment).then(
+        this.commentsHandler()
+      )
+    }
   }
 
   handleUpdateComment = (commentdata) => {

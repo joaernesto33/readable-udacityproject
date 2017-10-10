@@ -10,11 +10,15 @@ class PostForm extends Component {
   handlePostData = (postdata) => {
     postdata.preventDefault()
     const values = serializeForm(postdata.target, { hash: true})
-    PostAPI.addPost(values).then((posts) => {
-      this.props.createPost(posts)
+    if (values.id) {
+      PostAPI.addPost(values).then((posts) => {
+        this.props.createPost(posts)
+        this.props.history.push("/")
+      })
+    } else{
       this.props.history.push("/")
+    }
 
-    })
   }
   render () {
     return (

@@ -27,15 +27,22 @@ class RelatedComments extends Component {
   handleCommentData = (commentdata) => {
     commentdata.preventDefault()
     const commentbody = serializeForm(commentdata.target, {hash: true})
-    PostAPI.addComment(commentbody).then(
+    if (commentbody.id) {
+      PostAPI.addComment(commentbody).then(
+        this.setState(() => ({
+          commentsModalOpen: false,
+        }))
+      ).then(
+        PostAPI.getPostComments(this.props.postid).then((comments) => {
+          this.props.detailComments(comments)
+        })
+      )
+    } else{
       this.setState(() => ({
         commentsModalOpen: false,
       }))
-    ).then(
-      PostAPI.getPostComments(this.props.postid).then((comments) => {
-        this.props.detailComments(comments)
-      })
-    )
+    }
+
   }
 
   render () {

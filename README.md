@@ -1,7 +1,7 @@
 ## Before You Begin
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app). <br>
 
-the Readable project is a post app that allows you to add, categorize, sort and update user posts. Also, this app includes a comments functionality to each post. This app uses an local API server provided by Udacity Course. <br>
+the Readable project is a post app that allows you to add, categorize, sort and update user posts. Also, this app includes a comments functionality to each post. This app uses a local API server provided by Udacity Course. <br>
 
 Below you will find some information on how to perform common tasks.<br>
 

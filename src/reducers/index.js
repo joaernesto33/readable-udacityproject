@@ -32,7 +32,7 @@ function xpost (state = postInitialState, action) {
     case GET_POSTS :
       return {
         posts:action.posts,
-        postOrderOption:'',
+        postOrderOption:'timeStamp',
         selectedCat:''
       }
 

@@ -59,7 +59,7 @@ class GeneralPostControls extends Component {
   }
 
   handleRemove = (idPost) => {
-    let r = window.confirm("Are you sure")
+    let r = window.confirm("Are you sure?")
     if (r) {
       PostAPI.deletePost(idPost).then(
         PostAPI.getPosts().then((posts) => {

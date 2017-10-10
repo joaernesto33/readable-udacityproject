@@ -54,7 +54,7 @@ class PostsListCat extends Component {
                 Current Score: {post.voteScore}<br></br>
                 Body: {post.body}<br></br>
                 Category: {post.category}<br></br>
-                <hr width="100%" noshade></hr>
+                <hr width="100%"></hr>
                 <GeneralPostControls
                   votes={post.voteScore}
                   postid={post.id}
